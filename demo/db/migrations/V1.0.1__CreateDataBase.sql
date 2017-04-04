@@ -1,0 +1,1 @@
+create database springboot_demo character set utf8;
