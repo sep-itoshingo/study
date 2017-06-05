@@ -1,13 +1,14 @@
-package com.example;
+package com.controller;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.sql.Timestamp;
-import java.util.Calendar;
-import java.util.Date;
+import com.example.AppUtil;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by shingo_ito on 2017/04/08.
@@ -18,11 +19,11 @@ class TodayDispController {
 
     @RequestMapping("/today/")
     public String today(Model model) {
-        Date today = Calendar.getInstance().getTime();
-        model.addAttribute("date", today);
-        Timestamp timestamp = new Timestamp(today.getTime());
-        model.addAttribute("timestamp", timestamp);
+        model.addAttribute("date", AppUtil.getNow());
+        model.addAttribute("timestamp", AppUtil.convertToTimestamp(AppUtil.getNow()));
 
+        List<Integer> list = Arrays.asList(1,2,3,4);
+        AppUtil.isContainsList(list, 1);
         return "today";
     }
 
