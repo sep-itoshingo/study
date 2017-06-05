@@ -35,6 +35,8 @@ public class HomeController {
 
         model.addAttribute("serverTime", formattedDate);
         model.addAttribute("list", Arrays.asList(1, 2, 3, 4, 5));
+
+        model.addAttribute("htmlStr", "<strong>hogehoge</strong>");
         return "home";
     }
 

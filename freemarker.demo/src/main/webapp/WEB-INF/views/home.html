@@ -1,19 +1,41 @@
-<!DOCTYPE html>
+<#ftl output_format="HTML"> <!DOCTYPE html>
 <html>
 <head>
-	<title>Home</title>
+<title>Home</title>
+<meta charset="utf-8" />
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
+	<h1>Hello world!</h1>
 
-<P>  The time on the server is ${serverTime}. </P>
-<hr/>
-<ul>
-<#list list as num>
-<li>${num}</li>
-</#list>
-</ul>
+	<P>The time on the server is ${serverTime}.</P>
+	<hr />
+
+	最後のliタグに「last」クラスをつけます
+	<ul>
+		<#list list as num>
+		<li<#if !num_has_next> class="last" </#if> >${num}</li>
+		</#list>
+	</ul>
+	<hr />
+	auto_importマクロ動作確認
+	<br /> <@echoHW "test" />
+	<hr />
+	html escape確認
+	<br /> ${htmlStr}
+	<hr />
+	html noescape確認
+	<br /> ${htmlStr?no_esc}
+	<hr />
+	refresh時につめた値
+	<br /> ${ref}
+
+	<hr />
+	functionを用いた判定処理テスト ${isEmpty(ref)}
+	<br />
+	<#if isEmpty(list) == 1>
+	   <span>true!!</span>
+	<#else>
+	   <span>false!!</span>
+	</#if>
 </body>
 </html>
